@@ -62,6 +62,10 @@ exports.updateLevel = asyncHandler(async (req, res, next) => {
   res.status(200).json({ message: "updateLevel NOT YET IMPLEMENTED" });
 });
 
+exports.deleteLevel = asyncHandler(async (req, res, next) => {
+  res.status(200).json({ message: "deleteLevel NOT YET IMPLEMENTED" });
+});
+
 exports.getLevelScores = asyncHandler(async (req, res, next) => {
   res.status(200).json({ message: "getLevelScores NOT YET IMPLEMENTED" });
 });
