@@ -6,7 +6,7 @@ const Score = require("../models/Score");
 const Level = require("../models/Level");
 
 exports.getLevels = asyncHandler(async (req, res, next) => {
-  const allLevels = await Level.find().score({ name: 1 }).exec();
+  const allLevels = await Level.find().sort({ name: 1 }).exec();
 
   if (!allLevels) {
     res.status(404).json({ message: "Error: No levels found." });
