@@ -64,11 +64,4 @@ describe("Level Tests", () => {
     expect(response.status).toEqual(200);
     expect(response.body.newLevel).toBeDefined();
   });
-
-  // it("returns error if no levels found", async () => {
-  //   const res = await request(app).get("/levels");
-  //   expect(res.headers["content-type"]).toMatch(/json/);
-  //   expect(res.status).toMatch(404);
-  //   expect(res.body.message).toMatch("Error: No levels found.");
-  // });
 });

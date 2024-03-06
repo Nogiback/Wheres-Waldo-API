@@ -27,15 +27,32 @@ exports.getScores = asyncHandler(async (req, res, next) => {
   res.status(200).json(allScores);
 });
 
-exports.createLevel = asyncHandler(async (req, res, next) => {
-  const level = new Level({
-    name: req.body.name,
-    characters: req.body.characters,
-    dimensions: req.body.dimensions,
-  });
-  const newLevel = await level.save();
-  res.status(200).json({ newLevel });
-});
+exports.createLevel = [
+  body("name", "Level name must not be empty.")
+    .trim()
+    .isLength({ min: 1 })
+    .escape(),
+  body("characters", "Characters must not be empty.").notEmpty(),
+  body("dimensions", "Dimensions must not be empty.").notEmpty(),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      res.status(401).json({ errors: errors.array() });
+      return;
+    }
+
+    const level = new Level({
+      name: req.body.name,
+      characters: req.body.characters,
+      dimensions: req.body.dimensions,
+    });
+
+    const newLevel = await level.save();
+    res.status(200).json(newLevel);
+  }),
+];
 
 exports.getLevel = asyncHandler(async (req, res, next) => {
   res.status(200).json({ message: "getLevel NOT YET IMPLEMENTED" });
