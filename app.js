@@ -9,6 +9,7 @@ const logger = require("morgan");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const compression = require("compression");
+const indexRouter = require("./routes/index");
 const corsOptions = {
   origin: "*",
   credentials: true,

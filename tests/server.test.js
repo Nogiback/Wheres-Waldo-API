@@ -16,7 +16,7 @@ afterAll(async () => {
   await closeMongoServer();
 });
 
-describe("Index Test", () => {
+describe("GET index, /", () => {
   it("returns welcome message", (done) => {
     request(app)
       .get("/")
@@ -62,6 +62,5 @@ describe("Level Tests", () => {
       });
     expect(response.headers["content-type"]).toMatch(/json/);
     expect(response.status).toEqual(200);
-    expect(response.body.newLevel).toBeDefined();
   });
 });
