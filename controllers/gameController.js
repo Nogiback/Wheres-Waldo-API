@@ -141,7 +141,8 @@ exports.deleteLevel = asyncHandler(async (req, res, next) => {
 
 exports.getLevelScores = asyncHandler(async (req, res, next) => {
   const allLevelScores = await Score.find({ level: req.params.levelID })
-    .sort({ score: -1 })
+    .sort({ score: 1 })
+    .populate("level", "name")
     .exec();
 
   if (!allLevelScores) {
