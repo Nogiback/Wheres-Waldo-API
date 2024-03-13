@@ -38,6 +38,7 @@ exports.createLevel = [
     .trim()
     .isLength({ min: 1 })
     .escape(),
+  body("imageURL", "Image URL cannot be empty.").trim().isLength({ min: 1 }),
   body("characters", "Characters must not be empty.").notEmpty(),
   body("dimensions", "Dimensions must not be empty.").notEmpty(),
 
@@ -51,6 +52,7 @@ exports.createLevel = [
 
     const level = new Level({
       name: req.body.name,
+      imageURL: req.body.imageURL,
       characters: req.body.characters,
       dimensions: req.body.dimensions,
     });

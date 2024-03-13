@@ -59,6 +59,7 @@ describe("Level Tests", () => {
           width: 1200,
           height: 900,
         },
+        imageURL: "https://images2.alphacoders.com/925/925901.jpg",
       });
     expect(response.headers["content-type"]).toMatch(/json/);
     expect(response.status).toEqual(200);

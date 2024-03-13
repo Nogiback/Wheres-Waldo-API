@@ -14,6 +14,7 @@ const LevelSchema = new Schema({
     width: { type: Number, required: true },
     height: { type: Number, required: true },
   },
+  imageURL: { type: String, required: true },
   scores: [{ type: Schema.Types.ObjectId, ref: "Score" }],
 });
 
