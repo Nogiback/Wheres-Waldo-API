@@ -64,6 +64,7 @@ exports.createLevel = [
 
 // GET LEVEL
 
+let startTime;
 exports.getLevel = asyncHandler(async (req, res, next) => {
   const level = await Level.findById(req.params.levelID).exec();
   if (!level) {
@@ -72,6 +73,18 @@ exports.getLevel = asyncHandler(async (req, res, next) => {
   }
 
   res.status(200).json(level);
+  startTime = performance.now();
+});
+
+// GET GAMETIME UPON LEVEL COMPLETION
+
+exports.completeLevel = asyncHandler(async (req, res, next) => {
+  const endTime = performance.now();
+  const timeDiff = startTime - endTime;
+  const timeInSeconds = timeDiff / 1000;
+
+  const gameTime = Math.round((gameTime + Number.EPSILON) * 100) / 100;
+  res.status(200).json({ gameTime });
 });
 
 // PUT UPDATE LEVEL

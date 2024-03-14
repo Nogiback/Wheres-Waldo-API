@@ -14,6 +14,7 @@ router.post("/levels", gameController.createLevel);
 router.get("/levels/:levelID", gameController.getLevel);
 router.put("/levels/:levelID", gameController.updateLevel);
 router.delete("/levels/:levelID", gameController.deleteLevel);
+router.get("/levels/:levelID/completed", gameController.completeLevel);
 router.get("/levels/:levelID/scores", gameController.getLevelScores);
 router.post("/levels/:levelID/scores", gameController.createScore);
 router.get("/levels/:levelID/scores/:scoreID", gameController.getLevelScore);
